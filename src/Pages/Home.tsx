@@ -1,20 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
-type UserInfo = {
-    id?: number,
-    username?: string,
-    password?: string
-}
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface HomePageProps {
-    User: UserInfo
+
 }
 
-const HomePage: React.FC<HomePageProps> = ({ User }) => {
+const HomePage: React.FC<HomePageProps> = () => {
+
+    const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+    useEffect(()=>{
+        if (token!=null){
+            navigate('/tasks');
+        }
+    },[])
 
     return <div>
-        
+        <h2>stay organized together.</h2>
+        <button onClick={()=>{navigate('/auth/login')}}>Login / Register</button>
     </div>
 }
 

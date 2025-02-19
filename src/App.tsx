@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import HomePage from './Pages/Home';
@@ -10,8 +9,6 @@ import './App.css'
 
 function App() {
 
-  const [ user, setUser ] = useState({});
-
   return (
     <BrowserRouter>
     <div className='root'>
@@ -19,7 +16,7 @@ function App() {
         <h1>Task Manager</h1>
       </header>
       <Routes>
-        <Route path='/' index element={<HomePage User={user}/>}/>
+        <Route path='/' index element={<HomePage />}/>
         <Route path='/tasks' element={<PrivateRoute component={TaskPage}/>}/>
         <Route path='/auth/login' element={<AuthPage AuthType='Login'/>}/>
         <Route path='/auth/register' element={<AuthPage AuthType='Register'/>}/>
