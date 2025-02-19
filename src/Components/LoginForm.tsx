@@ -16,26 +16,27 @@ const LoginForm: React.FC<LoginFormProps> = ({}) =>{
         password:''
     });
 
+    const [message, setMessage] = useState<string>(' ')
+
     const onSubmit = (e:FormEvent) => {
         e.preventDefault();
         console.log(input);
     }
 
     return <form onSubmit={(e)=>{onSubmit(e)}}>
-
+        <p>{message}</p>
+        <label htmlFor="username">username</label>
         <input 
             name="username"
             type="text" 
-            placeholder="USERNAME"
             required
             value={input.username} 
             onChange={e=>{setInput({...input, [e.target.name]: e.target.value})}}
         />
-
+        <label htmlFor="password">password</label>
         <input 
             name="password"
             type="password" 
-            placeholder="PASSWORD"
             required
             value={input.password} 
             onChange={e=>{setInput({...input, [e.target.name]: e.target.value})}}

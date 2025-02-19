@@ -14,3 +14,7 @@ form {
 form > input {
   font-size: larger;
 }
+
+form > label{
+  text-transform: uppercase;
+}
