@@ -18,9 +18,22 @@ const LoginForm: React.FC<LoginFormProps> = ({}) =>{
 
     const [message, setMessage] = useState<string>(' ')
 
-    const onSubmit = (e:FormEvent) => {
+    const onSubmit = async (e:FormEvent) => {
         e.preventDefault();
-        console.log(input);
+
+        fetch('http://localhost:5000/auth/login',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(input),
+        }).then( async (res) =>{
+            const data = await res.json();
+            console.log(data);
+                
+        }).catch((error)=>{
+            console.log(error);
+        })
     }
 
     return <form onSubmit={(e)=>{onSubmit(e)}}>
