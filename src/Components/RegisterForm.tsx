@@ -24,7 +24,11 @@ const RegisterForm: React.FC<RegisterFormProps> = ({}) =>{
 
     const onSubmit = (e:FormEvent) => {
         e.preventDefault();
-        console.log(input);
+        
+        if (input.password!==input.passwordConfirm){
+            setMessage('password does not match.');
+            return;
+        }
     }
 
     return <form onSubmit={(e)=>{onSubmit(e)}}>
