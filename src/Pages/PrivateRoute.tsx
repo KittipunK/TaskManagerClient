@@ -1,22 +1,20 @@
-import React from "react";
-import { Route, Navigate, RouteProps } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 interface PrivateRouteProps {
     component: React.ComponentType<any>,
-    RouteProps: RouteProps
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ component: Component, ...rest}) =>{
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ component: Component}) =>{
     const token = localStorage.getItem('token');
-    return (<Route
-        {...rest}
-        element = {
-            (token)
-            ?(<Component />)
-            :(<Navigate to='/auth/login' replace />)
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if (token==null){
+            navigate('/auth/login');
         }
-        />
-    );
+    },[])
+
+    return (<Component/>);
 }
 
 export default PrivateRoute;

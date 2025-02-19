@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import HomePage from './Pages/Home';
+import PrivateRoute from './Pages/PrivateRoute';
+import TaskPage from './Pages/Task';
+import AuthPage from './Pages/Auth';
 
 import './App.css'
 
@@ -17,6 +20,8 @@ function App() {
       </header>
       <Routes>
         <Route path='/' index element={<HomePage User={user}/>}/>
+        <Route path='/tasks' element={<PrivateRoute component={TaskPage}/>}/>
+        <Route path='/auth/login' element={<AuthPage />}/>
       </Routes>
     </div>
     </BrowserRouter>
