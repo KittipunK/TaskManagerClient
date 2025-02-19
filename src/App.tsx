@@ -21,7 +21,8 @@ function App() {
       <Routes>
         <Route path='/' index element={<HomePage User={user}/>}/>
         <Route path='/tasks' element={<PrivateRoute component={TaskPage}/>}/>
-        <Route path='/auth/login' element={<AuthPage />}/>
+        <Route path='/auth/login' element={<AuthPage AuthType='Login'/>}/>
+        <Route path='/auth/register' element={<AuthPage AuthType='Register'/>}/>
       </Routes>
     </div>
     </BrowserRouter>
