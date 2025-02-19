@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
     <div className='root'>
       <header>
-        <h1>Task Manager</h1>
+        <h3>Task Manager</h3>
       </header>
       <Routes>
         <Route path='/' index element={<HomePage />}/>
