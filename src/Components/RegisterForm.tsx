@@ -1,4 +1,5 @@
 import React, {FormEvent, useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 type registerModel = {
     username: string,
@@ -11,6 +12,8 @@ interface RegisterFormProps{
 }
 
 const RegisterForm: React.FC<RegisterFormProps> = ({}) =>{
+
+    const navigate = useNavigate();
 
     const [input, setInput] = useState<registerModel>({
         username:'',
@@ -36,7 +39,12 @@ const RegisterForm: React.FC<RegisterFormProps> = ({}) =>{
             body: JSON.stringify(input),
         }).then( async (res) =>{
             const data = await res.json();
-            console.log(data);
+            
+            if(res.status==200){
+                navigate('/');
+            }else{
+                setMessage(data.message);
+            }
                 
         }).catch((error)=>{
             console.log(error);
