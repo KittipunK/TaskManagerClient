@@ -4,7 +4,6 @@ type registerModel = {
     username: string,
     password: string,
     passwordConfirm: string,
-    email: string
 }
 
 interface RegisterFormProps{
@@ -17,7 +16,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({}) =>{
         username:'',
         password:'',
         passwordConfirm:'',
-        email:''
     });
 
     const [message, setMessage] = useState<string>(' ');
@@ -69,14 +67,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({}) =>{
             type="password" 
             required
             value={input.passwordConfirm} 
-            onChange={e=>{setInput({...input, [e.target.name]: e.target.value})}}
-        />
-        <label htmlFor="email">email</label>
-        <input 
-            name="email"
-            type="email" 
-            required
-            value={input.email} 
             onChange={e=>{setInput({...input, [e.target.name]: e.target.value})}}
         />
 

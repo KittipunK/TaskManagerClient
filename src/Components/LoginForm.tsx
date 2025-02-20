@@ -29,7 +29,8 @@ const LoginForm: React.FC<LoginFormProps> = ({}) =>{
             body: JSON.stringify(input),
         }).then( async (res) =>{
             const data = await res.json();
-            console.log(data);
+            
+            setMessage(data.message);
                 
         }).catch((error)=>{
             console.log(error);
