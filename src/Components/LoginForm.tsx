@@ -33,7 +33,8 @@ const LoginForm: React.FC<LoginFormProps> = ({}) =>{
         }).then( async (res) =>{
             const data = await res.json();
             if(res.status==200){
-                navigate('/');
+                localStorage.setItem('token', data.token);
+                navigate('/tasks');
             }else{
                 setMessage(data.message);
             }
