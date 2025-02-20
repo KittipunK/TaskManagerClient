@@ -41,7 +41,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({}) =>{
             const data = await res.json();
             
             if(res.status==200){
-                navigate('/');
+                localStorage.setItem('token', data.token);
+                navigate('/tasks');
             }else{
                 setMessage(data.message);
             }
