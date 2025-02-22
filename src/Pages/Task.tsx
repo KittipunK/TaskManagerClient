@@ -1,4 +1,4 @@
-import React,{ useState, useEffect, FormEvent } from "react";
+import React,{ useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface taskProps{
@@ -44,12 +44,13 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             },
-        }).then(()=>{
-
-        }).then(data=>{
-            if(data!=undefined){
-                setTasks(data);
+        }).then(async (res)=>{
+            if(res.status==200){
+                const fetchData = (await res.json());
+                setTasks(fetchData.data);
+                
             }
+        }).catch(err=>{console.log(err);
         })
     },[])
 
@@ -58,7 +59,7 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
         navigate('/');
     }
 
-    const onSubmit = (e:FormEvent<HTMLFormElement>) => {
+    const onSubmit = () => {
         fetch('http://localhost:5000/tasks',{
             method: 'POST',
             headers: {
@@ -76,10 +77,22 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
         })
     }
 
+    const onExpand = () =>{
+
+    }
+
+    const onEdit = () =>{
+
+    }
+
+    const onDelete = () =>{
+
+    }
+
     return <div>
         <button onClick={onSignOut}>Sign out</button>
         <div className="tasksArea">
-            <form onSubmit={(e)=>{onSubmit(e)}}>
+            <form onSubmit={()=>{onSubmit()}}>
                 <label htmlFor="title">title</label>
                 <input 
                     name="title"
@@ -101,27 +114,12 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
             <div className="taskDisplay">
                 <p>My Task</p>
                 <ul>
-                {tasks.map((props, index)=>{
-                    const [expand, setExpand] = useState<boolean>(false);
-
-                    const onExpand = () =>{
-                
-                    }
-                
-                    const onEdit = () =>{
-                
-                    }
-                
-                    const onDelete = () =>{
-                
-                    }
-                
+                {tasks.map((props)=>{
+                    
                     return <li key={props.id} className="taskTemplate">
                         <input type="checkbox" checked={(props.isComplete?true:false)}/>
                         <p>{props.title}</p>
-                        {(props.description?.length<=0)&&
-                        <button onClick={()=>onExpand()}>{'>'}</button>
-                        }
+                        <button onClick={()=>onExpand()} className="expandBtn">{'>'}</button>
                         <button onClick={()=>onEdit()}>edit</button>
                         <button onClick={()=>onDelete()}>delete</button>
                     </li>

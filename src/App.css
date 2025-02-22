@@ -62,9 +62,31 @@ ul {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 
   border: 1px black solid;
   border-radius: 5px;
+
+  overflow-y: auto;
+}
+
+.taskTemplate{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 5% 50% 10% 20% 20%;
+  align-items: center;
+}
+
+.taskTemplate > button{
+  font-size: small;
+  width: 50px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.expandBtn{
+  transform: rotate(90deg) scaleX(0.5);
 }
