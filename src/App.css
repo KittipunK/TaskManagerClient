@@ -48,3 +48,9 @@ form > p{
   background-color: bisque;
   color: black;
 }
+
+.tasksArea{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
