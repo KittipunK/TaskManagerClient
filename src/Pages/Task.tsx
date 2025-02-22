@@ -59,7 +59,21 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
     }
 
     const onSubmit = (e:FormEvent<HTMLFormElement>) => {
-        
+        fetch('http://localhost:5000/tasks',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(taskInput),
+        }).then( async (res) =>{
+            const data = await res.json();
+            if(res.status==200){
+                console.log(data);
+            }
+        }).catch((error)=>{
+            console.log(error);
+        })
     }
 
     return <div>
@@ -103,7 +117,7 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
                     }
                 
                     return <li key={props.id} className="taskTemplate">
-                        <input type="checkbox"/>
+                        <input type="checkbox" checked={(props.isComplete?true:false)}/>
                         <p>{props.title}</p>
                         {(props.description?.length<=0)&&
                         <button onClick={()=>onExpand()}>{'>'}</button>
