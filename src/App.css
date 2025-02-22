@@ -53,4 +53,18 @@ form > p{
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+}
+
+ul {
+  height: 50vh;
+  width: 50vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px black solid;
+  border-radius: 5px;
 }

@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from "react";
+import React,{ useState, useEffect, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface taskProps{
@@ -58,14 +58,14 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
         navigate('/');
     }
 
-    const onSubmit = () => {
+    const onSubmit = (e:FormEvent<HTMLFormElement>) => {
         
     }
 
     return <div>
         <button onClick={onSignOut}>Sign out</button>
         <div className="tasksArea">
-            <form onSubmit={()=>{onSubmit()}}>
+            <form onSubmit={(e)=>{onSubmit(e)}}>
                 <label htmlFor="title">title</label>
                 <input 
                     name="title"
@@ -85,6 +85,8 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
                 <button type="submit">Submit</button>
             </form>
             <div className="taskDisplay">
+                <p>My Task</p>
+                <ul>
                 {tasks.map((props, index)=>{
                     const [expand, setExpand] = useState<boolean>(false);
 
@@ -100,7 +102,7 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
                 
                     }
                 
-                    return <div key={props.id} className="taskTemplate">
+                    return <li key={props.id} className="taskTemplate">
                         <input type="checkbox"/>
                         <p>{props.title}</p>
                         {(props.description?.length<=0)&&
@@ -108,8 +110,9 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
                         }
                         <button onClick={()=>onEdit()}>edit</button>
                         <button onClick={()=>onDelete()}>delete</button>
-                    </div>
+                    </li>
                 })}
+                </ul>
             </div>
         </div>
     </div>
