@@ -56,7 +56,7 @@ const TaskTemplate: React.FC<TaskTemplateProps> = ({id, title, description, isCo
             body: JSON.stringify({
                 token: token,
                 column: 'title',
-                value: input.title
+                value: `'${input.title}'`
             })
         }).then(async (res)=>{
             if(res.status==200){
@@ -73,7 +73,7 @@ const TaskTemplate: React.FC<TaskTemplateProps> = ({id, title, description, isCo
             body: JSON.stringify({
                 token: token,
                 column: 'description',
-                value: input.description
+                value: `'${input.description}'`
             })
         }).then(async (res)=>{
             if(res.status==200){
