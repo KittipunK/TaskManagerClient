@@ -79,16 +79,11 @@ I'm open to work 10+hrs mon-sat for 4,000$/month starting
 EXAMPLE:
 
 Registration
-<video width="320" height="240" controls>
-  <source src="Registration.mp4" type="video/mp4">
-</video>
+[Registration.mp4](https://github.com/KittipunK/TaskManagerClient/blob/master/Registration.mp4)
 
 Login
-<video width="320" height="240" controls>
-  <source src="https://github.com/KittipunK/TaskManagerClient/blob/master/Login.mp4" type="video/mp4">
-</video>
+[Login.mp4](https://github.com/KittipunK/TaskManagerClient/blob/master/Login.mp4)
 
 Modifying tasks
-<video width="320" height="240" controls>
-  <source src="Add_Edit_Delete_Tasks.mp4" type="video/mp4">
-</video>
+[Add_Edit_Delete_Tasks.mp4](https://github.com/KittipunK/TaskManagerClient/blob/master/Add_Edit_Delete_Tasks.mp4)
+
