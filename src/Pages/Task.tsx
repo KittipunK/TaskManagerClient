@@ -1,7 +1,8 @@
 import React,{ useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import TaskTemplate from "../Components/taskTemplate";
 
-interface taskProps{
+interface TaskTemplateProps{
     id: number,
     title: string,
     description: string,
@@ -14,14 +15,6 @@ type taskInputProps = {
     description?: string
 }
 
-declare global {
-    namespace JSX {
-        interface IntrinisicElements {
-            'taskProps': taskProps
-        }
-    }
-}
-
 interface TaskPageProps {
 
 }
@@ -31,7 +24,7 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
     const navigate = useNavigate();
 
     const [token] = useState<string | null>(localStorage.getItem('token'));
-    const [tasks, setTasks] = useState<taskProps[]>([]);
+    const [tasks, setTasks] = useState<TaskTemplateProps[]>([]);
     const [taskInput, setTaskInput] = useState<taskInputProps>({
         title: "",
         description: "",
@@ -77,18 +70,6 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
         })
     }
 
-    const onExpand = () =>{
-
-    }
-
-    const onEdit = () =>{
-
-    }
-
-    const onDelete = () =>{
-
-    }
-
     return <div>
         <button onClick={onSignOut}>Sign out</button>
         <div className="tasksArea">
@@ -114,16 +95,17 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
             <div className="taskDisplay">
                 <p>My Task</p>
                 <ul>
-                {tasks.map((props)=>{
-                    
-                    return <li key={props.id} className="taskTemplate">
-                        <input type="checkbox" checked={(props.isComplete?true:false)}/>
-                        <p>{props.title}</p>
-                        <button onClick={()=>onExpand()} className="expandBtn">{'>'}</button>
-                        <button onClick={()=>onEdit()}>edit</button>
-                        <button onClick={()=>onDelete()}>delete</button>
-                    </li>
-                })}
+                    {tasks.map((props: TaskTemplateProps, index:number)=>{              
+                        return <TaskTemplate
+                            key={index}
+                            id={props.id}
+                            title={props.title}
+                            description={props.description}
+                            isComplete={props.isComplete}
+                            userId={props.userId}
+                            token={token}
+                        />
+                    })}
                 </ul>
             </div>
         </div>
