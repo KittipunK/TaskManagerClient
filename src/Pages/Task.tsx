@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import TaskTemplate from "../Components/taskTemplate";
+import TaskTemplate from "../Components/TaskTemplate.tsx";
 
 interface TaskTemplateProps{
     id: number,
@@ -76,6 +76,7 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
             <form onSubmit={()=>{onSubmit()}}>
                 <label htmlFor="title">title</label>
                 <input 
+                    required
                     name="title"
                     type="text"
                     maxLength={30}
