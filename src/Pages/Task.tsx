@@ -102,7 +102,6 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
                             title={props.title}
                             description={props.description}
                             isComplete={props.isComplete}
-                            userId={props.userId}
                             token={token}
                         />
                     })}
