@@ -85,7 +85,7 @@ Registration
 
 Login
 <video width="320" height="240" controls>
-  <source src="Login.mp4" type="video/mp4">
+  <source src="https://github.com/KittipunK/TaskManagerClient/blob/master/Login.mp4" type="video/mp4">
 </video>
 
 Modifying tasks
