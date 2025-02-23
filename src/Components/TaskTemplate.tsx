@@ -56,7 +56,18 @@ const TaskTemplate: React.FC<TaskTemplateProps> = ({id, title, description, isCo
     }
 
     const onDelete = () =>{
-
+        fetch(`http://localhost:5000/tasks/${data.id}`,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+        }).then(async (res)=>{
+            if(res.status==200){
+                console.log('complete');
+            }
+        }).catch(err=>{console.log(err);
+        })
         window.location.reload();
     }
 
