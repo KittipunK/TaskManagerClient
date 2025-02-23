@@ -59,6 +59,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({}) =>{
             name="username"
             type="text" 
             required
+            maxLength={20}
             value={input.username} 
             onChange={e=>{setInput({...input, [e.target.name]: e.target.value})}}
         />
