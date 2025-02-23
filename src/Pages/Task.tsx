@@ -95,7 +95,7 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
             <div className="taskDisplay">
                 <p>My Task</p>
                 <ul>
-                    {tasks.map((props: TaskTemplateProps, index:number)=>{              
+                    {(tasks.length>0)?tasks.map((props: TaskTemplateProps, index:number)=>{              
                         return <TaskTemplate
                             key={index}
                             id={props.id}
@@ -104,7 +104,7 @@ const TaskPage: React.FC<TaskPageProps> = ({ }) => {
                             isComplete={props.isComplete}
                             token={token}
                         />
-                    })}
+                    }):<p>You don't have any task</p>}
                 </ul>
             </div>
         </div>
