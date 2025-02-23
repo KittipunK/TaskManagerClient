@@ -82,8 +82,8 @@ ul {
 }
 
 .taskTemplate > input{
-  width: 30px;
-  height: 30px;
+  width: 1.4em;
+  height: 1.4em;
 }
 
 .taskTemplate > button{
@@ -104,5 +104,6 @@ ul {
 }
 
 .detail > p, .detail > h4{
+  font-size: 0.8em;
   margin: 0;
 }
